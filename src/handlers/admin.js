@@ -461,6 +461,7 @@ async function getD1DailyUsage(token, accountId) {
 }
 
 async function handleLoginAction({ request, env, sys, data }) {
+  return createErrorResponse(new AppError('Password login disabled; use GitHub', 403));
   const { username, password } = data;
 
   if (!username || !password) {
