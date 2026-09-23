@@ -461,11 +461,6 @@ async function getD1DailyUsage(token, accountId) {
 }
 
 async function handleLoginAction({ request, env, sys, data }) {
-  // 可通过 Cloudflare Worker 环境变量彻底关闭传统账号密码登录
-  if (String(env.DISABLE_PASSWORD_LOGIN || '').toLowerCase() === 'true') {
-    return createUnauthorizedResponse('invalidCredentials');
-  }
-
   const { username, password } = data;
 
   if (!username || !password) {
