@@ -4,9 +4,9 @@
       <div class="login-header">
         <div class="login-icon">🔐</div>
         <h2 class="login-title">{{ trans.adminLogin }}</h2>
-        <p class="login-subtitle">{{ trans.enterCredentials }}</p>
+        <p class="login-subtitle">{{ trans.loginWithGithub }}</p>
       </div>
-      <form @submit.prevent="$emit('login')">
+      <form v-if="false" @submit.prevent="$emit('login')">
         <div v-if="isMultipleMode" class="login-form-group">
           <label class="login-label">{{ trans.apiEndpoint }}</label>
           <select :value="selectedApiIndex" class="login-input" @change="$emit('api-index-change', Number($event.target.value))">
@@ -35,11 +35,10 @@
         <div v-if="turnstileSiteKey && (turnstileLoginEnabled || (turnstileEnabled && !turnstileVerified))" class="login-form-group">
           <div id="admin-turnstile-container"></div>
         </div>
-        <div v-if="loginError" id="login-error" class="login-error">{{ loginError }}</div>
         <button type="submit" class="login-btn">{{ loginLoading ? '⏳' : trans.login }}</button>
       </form>
+      <div v-if="loginError" id="login-error" class="login-error">{{ loginError }}</div>
       <template v-if="githubOAuthEnabled">
-        <div class="login-divider"><span>{{ trans.or }}</span></div>
         <button type="button" class="login-btn github-login-btn" :disabled="loginLoading" @click="$emit('github-login')">
           {{ trans.loginWithGithub }}
         </button>
