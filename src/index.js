@@ -197,7 +197,7 @@ export default {
       const search = target.search;
       target.pathname = '/admin';
       target.search = '';
-      target.hash = `admin${search}`;
+      target.hash = `/admin${search}`;
       return Response.redirect(target.toString(), 302);
     }
 
