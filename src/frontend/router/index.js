@@ -1,4 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+import { normalizeAdminEntryUrl } from './adminEntryUrl'
+
+normalizeAdminEntryUrl()
 
 const routes = [
   {
